@@ -27,10 +27,18 @@ const swap = async()=>{
         amountIn: ethers.utils.parseUnits("0.0001", "ether"), // Example: 1 ETH
         amountOutMinimum: ethers.utils.parseUnits("0.001", "ether") // Example: 0.5 ETH
       };
+    const paramsFORUSDC = {
+        path: "0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f000064a4151b2b3e269645181dccf2d426ce75fcbdeca9", // Replace with the actual bytes value for the path
+        recipient: "0xd103929e56b9aab3ce786429d2088a98adaa9c9e", // Replace with the actual recipient address
+        deadline: Math.floor(Date.now() / 1000) + 60 * 20, // 20 minutes from the current Unix time
+        amountIn: ethers.utils.parseUnits("0.06", "ether"), // Example: 1 ETH
+        amountOutMinimum: ethers.utils.parseUnits("99284", "wei") // Example: 0.5 ETH
+      };
+
     
 
-    const res = await contractinstance.exactInput(params,{
-        value:ethers.utils.parseEther("0.0001")
+    const res = await contractinstance.exactInput(paramsFORUSDC,{
+        value:ethers.utils.parseEther("0.06")
     });
     console.log("res",res);
 
@@ -42,3 +50,6 @@ try {
 }
 
 swap()
+
+
+
