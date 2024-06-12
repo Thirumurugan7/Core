@@ -36,9 +36,9 @@ const swap = async () => {
     deadline: Math.floor(Date.now() / 1000) + 60 * 20,
   };
 
-  const res = await contractinstance.increaseLiquidity(params);
-  console.log("res", res);
-  const res1 = await contractinstance.positions("991");
+  // const res = await contractinstance.increaseLiquidity(params);
+  // console.log("res", res);
+  const res1 = await contractinstance.decreaseLiquidity(params);
   console.log("res1", res1);
 
   try {
