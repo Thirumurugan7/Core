@@ -1,10 +1,21 @@
 const { ethers } = require('ethers');
-
+// abi of core staking contract
 const abi  = require("./corestacking.json")
 require("dotenv").config()
 
+
+// the contract used for core staking 
+// https://scan.coredao.org/address/0x0000000000000000000000000000000000001007
+
 const stake = async()=>{
+
+  // In mainnet
     const provider = new ethers.providers.JsonRpcProvider("https://rpc.coredao.org/");
+
+    // In Devnet
+    // const provider = new ethers.providers.JsonRpcProvider("https://rpc.dev.btcs.network");
+
+
     console.log("provider",provider);
 
     const privatekey = process.env.STAKEKEY;
@@ -13,6 +24,7 @@ const stake = async()=>{
 
     // contract address to stake core token in mainnet
     const address = "0x0000000000000000000000000000000000001007";
+
 
     const walletwithprovider = wallet.connect(provider)
 
@@ -57,3 +69,8 @@ stake()
 //   confirmations: 0,
 //   wait: [Function (anonymous)]
 // }
+
+
+
+// Sample Transaction in Block Explorer
+//https://scan.coredao.org/tx/0x11d238a6b46e94b9a2aba351a86d115331b284fe762d1cb12929cd02a7e83486
